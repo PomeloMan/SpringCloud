@@ -1,0 +1,19 @@
+server:
+   port: 8200
+spring:
+   profiles:
+      active: dev
+   application:
+      name: file-server
+   http:
+      encoding:
+         charset: UTF-8
+         enabled: true
+         force: true
+      multipart:
+         max-file-size: 10M
+         max-request-size: 20M
+         defaultEncoding: UTF-8
+logging:
+   config: classpath:logback-spring.xml
+   path: logs
