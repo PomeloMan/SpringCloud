@@ -1,7 +1,7 @@
 eureka:
    client:
       serviceUrl:
-         defaultZone: http://eureka:eureka@192.168.99.100:8760/eureka/
+         defaultZone: http://eureka:eureka@192.168.99.101:8760/eureka/
    instance:
       prefer-ip-Address: true
 spring:
@@ -27,4 +27,4 @@ spring:
             format_sql: false
 cors:
    exposed-headers: Autherication
-   allowed-origins: http://192.168.99.100
+   allowed-origins: http://192.168.99.101

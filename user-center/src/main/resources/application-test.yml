@@ -1,7 +1,7 @@
 eureka:
    client:
       serviceUrl:
-         defaultZone: http://pomelo:pomelo@192.168.99.100:8760/eureka/
+         defaultZone: http://pomelo:pomelo@192.168.99.101:8760/eureka/
    instance:
       prefer-ip-Address: true
       instance-id: ${spring.application.name}:${server.port}:@project.version@
@@ -28,7 +28,7 @@ spring:
             format_sql: true
 cors:
    exposed-headers: Autherication
-   allowed-origins: http://192.168.99.100
+   allowed-origins: http://192.168.99.101
 file-server:
-   host: http://192.168.99.100:8200/
-   user-avatar-url: http://192.168.99.100:8200/file/user/avatar/
+   host: http://192.168.99.101:8200/
+   user-avatar-url: http://192.168.99.101:8200/file/user/avatar/
