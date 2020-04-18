@@ -13,8 +13,8 @@ import javax.persistence.Table;
 
 import org.apache.commons.lang3.StringUtils;
 
+import io.pomelo.commons.enums.Status;
 import io.pomelo.commons.util.PasswordEncoder;
-import io.pomelo.enums.Status;
 import io.swagger.annotations.ApiModelProperty;
 
 @Entity

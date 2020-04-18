@@ -25,15 +25,15 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import io.pomelo.commons.enums.Status;
 import io.pomelo.commons.util.BeanUtils;
 import io.pomelo.commons.util.PageableUtil;
+import io.pomelo.commons.util.base.DateUtil;
 import io.pomelo.commons.view.IPage;
-import io.pomelo.enums.Status;
 import io.pomelo.user.center.core.persistence.entity.Authority;
 import io.pomelo.user.center.core.persistence.repo.AuthorityRepository;
 import io.pomelo.user.center.core.service.interfaces.IAuthorityService;
 import io.pomelo.user.center.core.view.IAuthority;
-import io.pomelo.util.common.DateUtil;
 
 @Service
 public class AuthorityService implements IAuthorityService {

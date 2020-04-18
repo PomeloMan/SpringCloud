@@ -3,8 +3,8 @@ package io.pomelo.commons.util;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
-import io.pomelo.util.security.IrreversibleEncryptor;
-import io.pomelo.util.security.IrreversibleEncryptor.Algorithm;
+import io.pomelo.commons.util.security.IrreversibleEncryptor;
+import io.pomelo.commons.util.security.IrreversibleEncryptor.Algorithm;
 
 public class PasswordEncoder {
 

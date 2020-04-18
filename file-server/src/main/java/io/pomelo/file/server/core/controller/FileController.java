@@ -25,9 +25,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.common.collect.Lists;
 
+import io.pomelo.commons.util.base.FileUtil;
 import io.pomelo.file.server.core.persistence.entity.File;
 import io.pomelo.file.server.core.service.interfaces.IFileService;
-import io.pomelo.util.common.FileUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 

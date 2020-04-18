@@ -7,7 +7,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import io.pomelo.enums.Status;
+import io.pomelo.commons.enums.Status;
 import io.swagger.annotations.ApiModelProperty;
 
 @MappedSuperclass

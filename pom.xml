@@ -121,12 +121,6 @@
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
 		</dependency>
-		<!-- io.pomelo.util -->
-		<dependency>
-			<groupId>io.pomelo</groupId>
-			<artifactId>util</artifactId>
-			<version>1.0.0</version>
-		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

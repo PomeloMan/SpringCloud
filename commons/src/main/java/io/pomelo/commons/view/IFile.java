@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
-import io.pomelo.enums.Status;
+import io.pomelo.commons.enums.Status;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

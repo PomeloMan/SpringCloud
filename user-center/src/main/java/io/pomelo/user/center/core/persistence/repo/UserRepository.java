@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import io.pomelo.enums.Status;
+import io.pomelo.commons.enums.Status;
 import io.pomelo.user.center.core.persistence.entity.Authority;
 import io.pomelo.user.center.core.persistence.entity.Role;
 import io.pomelo.user.center.core.persistence.entity.User;

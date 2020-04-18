@@ -18,6 +18,22 @@
 	<packaging>jar</packaging>
 	<url>http://maven.apache.org</url>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<bcprov.version>1.57</bcprov.version>
+		<poi.version>3.17</poi.version>
+		<adal4j.version>1.5.0</adal4j.version>
+		<jjwt.version>0.9.0</jjwt.version>
+		<commons-io.version>2.6</commons-io.version>
+		<commons-compress.version>1.20</commons-compress.version>
+		<commons-fileupload.version>1.4</commons-fileupload.version>
+		<commons-collections4.version>4.4</commons-collections4.version>
+		<commons-logging.version>1.2</commons-logging.version>
+		<junit.version>4.13</junit.version>
+	</properties>
+
 	<dependencies>
 		<!-- jpa -->
 		<dependency>
@@ -34,6 +50,88 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
 			<version>${druid.version}</version>
+		</dependency>
+
+		<!-- util -->
+		<!-- org.bouncycastle.jce -->
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-jdk15on</artifactId>
+			<version>${bcprov.version}</version>
+		</dependency>
+		<!-- org.apache.httpcomponents -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+		<!-- org.apache.poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<!-- com.google.code.gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+		<!-- Microsoft Azure Active Directory Authentication Library (ADAL) for 
+			Java -->
+		<!-- https://github.com/AzureAD/azure-activedirectory-library-for-java/releases -->
+		<dependency>
+			<groupId>com.microsoft.azure</groupId>
+			<artifactId>adal4j</artifactId>
+			<version>${adal4j.version}</version>
+		</dependency>
+		<!-- jwt -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>${jjwt.version}</version>
+		</dependency>
+		<!-- jgit -->
+		<dependency>
+			<groupId>org.eclipse.jgit</groupId>
+			<artifactId>org.eclipse.jgit</artifactId>
+		</dependency>
+		<!-- commons -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-compress</artifactId>
+			<version>${commons-compress.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${commons-fileupload.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>${commons-collections4.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${commons-logging.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
 		</dependency>
 	</dependencies>
 </project>
