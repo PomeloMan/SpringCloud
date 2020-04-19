@@ -1,9 +1,10 @@
 eureka:
    client:
-      serviceUrl:
+      service-url:
          defaultZone: http://eureka:eureka@192.168.99.101:8760/eureka/
    instance:
       prefer-ip-Address: true
+      instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${server.port}:@project.version@
 spring:
    datasource:
       url: jdbc:mysql://192.168.99.1:3306/pomelo-user?serverTimezone=UTC&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
