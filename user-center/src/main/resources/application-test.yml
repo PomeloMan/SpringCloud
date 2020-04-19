@@ -31,4 +31,4 @@ cors:
    allowed-origins: http://192.168.99.101
 file-server:
    host: http://192.168.99.101:8200/
-   user-avatar-url: http://192.168.99.101:8200/bytes/file/user/avatar/
+   user-avatar-url: http://192.168.99.101:8200/file/bytes/user/avatar/

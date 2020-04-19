@@ -31,4 +31,4 @@ cors:
    allowed-origins: http://127.0.0.1:8000
 file-server:
    host: http://127.0.0.1:8200/
-   user-avatar-url: http://127.0.0.1:8200/bytes/file/user/avatar/
+   user-avatar-url: http://127.0.0.1:8200/file/bytes/user/avatar/
