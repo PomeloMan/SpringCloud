@@ -1,7 +1,7 @@
 eureka:
    client:
       serviceUrl:
-         defaultZone: http://eureka:eureka@springcloud-eureka-server:8760/eureka/ # springcloud-eureka-server 为 docker 容器名称
+         defaultZone: http://eureka:eureka@192.168.99.101:8760/eureka/ # springcloud-eureka-server 为 docker 容器名称
    instance:
       prefer-ip-Address: true
       instance-id: ${spring.application.name}:${server.port}:@project.version@
