@@ -14,6 +14,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +36,9 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("/file")
 @Api(value = "/file", tags = "FileController")
 public class FileController {
+
+	@Value("${file.path}")
+	String filePath;
 
 	@Autowired
 	IFileService fileService;
@@ -69,8 +73,9 @@ public class FileController {
 		List<File> savedFiles = Lists.newArrayList();
 		for (MultipartFile multipartFile : file) {
 			String id = UUID.randomUUID().toString();
-			java.io.File destFile = FileUtil.getFile(FileUtil.getCurrentProjectDirection(), service, module,
-					DateFormatUtils.format(Calendar.getInstance(), "yyyyMMdd"),
+			java.io.File destFile = FileUtil.getFile(
+					StringUtils.isNotEmpty(filePath) ? filePath : FileUtil.getCurrentProjectDirection(), service,
+					module, DateFormatUtils.format(Calendar.getInstance(), "yyyyMMdd"),
 					id + "." + StringUtils.substringAfterLast(multipartFile.getOriginalFilename(), "."));
 			File sysFile = new File(multipartFile.getOriginalFilename(), multipartFile.getContentType(),
 					destFile.getPath(), service + "/" + module);

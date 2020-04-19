@@ -29,3 +29,5 @@ spring:
 cors:
    exposed-headers: Autherication
    allowed-origins: http://192.168.99.101
+file:
+   path: /tmp # 如果是docker环境，此目录需要对应挂载目录(Dockerfile VOLUME /tmp)。
