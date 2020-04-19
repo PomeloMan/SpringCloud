@@ -7,12 +7,12 @@ CONTAINERNAME="springcloud-eureka-server"
 
 # 构建镜像
 docker -H $DOCKERHOST:2376 --tlsverify build --no-cache -t $IMAGENAME .
-if [ "$?"-ne 0]; then echo "command failed"; exit 1; fi
+if [ $? -ne 0 ]; then echo "command failed"; exit 1; fi
 
 # 停止容器并删除
 docker -H $DOCKERHOST:2376 --tlsverify stop $CONTAINERNAME
 docker -H $DOCKERHOST:2376 --tlsverify rm $CONTAINERNAME
-if [ "$?"-ne 0]; then echo "command failed"; exit 1; fi
+if [ $? -ne 0 ]; then echo "command failed"; exit 1; fi
 
 # -p 配置端口映射，格式是外部访问端口：容器内端口
 # -d 后台运行
