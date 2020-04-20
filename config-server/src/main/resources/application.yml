@@ -8,11 +8,13 @@ spring:
    cloud:
       config:
          server:
+            native:
+               search-locations: classpath:/config/{application}
             git:
                uri: https://github.com/PomeloMan/SpringCloud
                default-label: master
-               username: 
-               password: 
+               username: null
+               password: null
                clone-on-start: true
-               search-paths: '{application}'
+               search-paths: /config-server/'{application}'
                base-dir: D:\tmp
