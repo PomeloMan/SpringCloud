@@ -2,19 +2,18 @@ server:
    port: 8001
 spring:
    profiles:
-      active: test
+      active: native # 使用本地配置
    application:
       name: config-server
    cloud:
       config:
          server:
             native:
-               search-locations: classpath:/config/{application}
+               search-locations: classpath:/config/{application} # spring.profiles.active=native
             git:
-               uri: https://github.com/PomeloMan/SpringCloud
+               uri: https://github.com/PomeloMan/SpringCloudConfig
                default-label: master
                username: null
                password: null
                clone-on-start: true
-               search-paths: /config-server/'{application}'
-               base-dir: D:\tmp
+               search-paths: '{application}'

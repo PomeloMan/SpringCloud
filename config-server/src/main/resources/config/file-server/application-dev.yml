@@ -1,0 +1,33 @@
+eureka:
+   client:
+      service-url:
+         defaultZone: http://eureka:eureka@127.0.0.1:8760/eureka/
+   instance:
+      prefer-ip-address: true
+      instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${server.port}:@project.version@
+spring:
+   datasource:
+      url: jdbc:postgresql://127.0.0.1:5432/pomelo-user
+      username: postgres
+      password: 219003
+      driver-class-name: org.postgresql.Driver
+      type: com.alibaba.druid.pool.DruidDataSource # http://localhost:8100/druid/index.html
+      druid:
+         stat-view-servlet:
+            login-username: admin
+            login-password: admin
+   jpa:
+      show-sql: true
+      hibernate:
+         ddl-auto: update
+      properties:
+         hibernate:
+            temp:
+               use_jdbc_metadata_defaults: false
+            dialect: org.hibernate.dialect.PostgreSQLDialect
+            format_sql: true
+logging:
+   path: logs
+cors:
+   exposed-headers: Autherication
+   allowed-origins: http://127.0.0.1:8000
