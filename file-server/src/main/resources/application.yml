@@ -16,4 +16,3 @@ spring:
          defaultEncoding: UTF-8
 logging:
    config: classpath:logback-spring.xml
-   path: logs

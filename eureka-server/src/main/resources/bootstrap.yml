@@ -1,3 +1,15 @@
 spring:
-  application:
-    name: eureka-server
+   application:
+      name: eureka-server
+eureka:
+   instance:
+      prefer-ip-address: false
+      hostname: 127.0.0.1 # C:\Windows\System32\drivers\etc\hosts(Windows) | /etc/hosts(Linux)
+   client:
+      service-url:
+         defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
+      register-with-eureka: false
+      fetch-registry: false
+   server:
+      eviction-interval-timer-in-ms: 30000
+      enable-self-preservation: false # 关闭自我保护

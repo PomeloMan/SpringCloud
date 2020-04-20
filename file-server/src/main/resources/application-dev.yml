@@ -26,6 +26,8 @@ spring:
                use_jdbc_metadata_defaults: false
             dialect: org.hibernate.dialect.PostgreSQLDialect
             format_sql: true
+logging:
+   path: logs
 cors:
    exposed-headers: Autherication
    allowed-origins: http://127.0.0.1:8000

@@ -26,6 +26,8 @@ spring:
                use_jdbc_metadata_defaults: false
             dialect: org.hibernate.dialect.MySQL5Dialect
             format_sql: false
+logging:
+   path: /tmp/logs
 cors:
    exposed-headers: Autherication
    allowed-origins: http://192.168.99.101
