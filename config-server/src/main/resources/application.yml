@@ -1,0 +1,15 @@
+server:
+   port: 8001
+spring:
+   application:
+      name: config-server
+   cloud:
+      config:
+         server:
+            native:
+               search-locations: classpath:/config/{application}
+            git:
+               uri: https://github.com/PomeloMan/SpringCloud
+               username: 
+               password: 
+               search-paths: '{application}'

@@ -1,0 +1,20 @@
+server:
+   port: 8100
+spring:
+   profiles:
+      active: dev
+   application:
+      name: user-center
+   http:
+      encoding:
+         charset: UTF-8
+         enabled: true
+         force: true
+      multipart:
+         max-file-size: 10M
+         max-request-size: 20M
+         defaultEncoding: UTF-8
+logging:
+   config: classpath:logback-spring.xml
+   level:
+      io.pomelo.commons: debug
