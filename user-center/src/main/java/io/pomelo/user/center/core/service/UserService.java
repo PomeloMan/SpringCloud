@@ -23,7 +23,6 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -35,6 +34,7 @@ import io.pomelo.commons.properties.FileServerProp;
 import io.pomelo.commons.util.BeanUtils;
 import io.pomelo.commons.util.base.DateUtil;
 import io.pomelo.commons.view.IPage;
+import io.pomelo.commons.view.IPageImpl;
 import io.pomelo.user.center.core.persistence.entity.Authority;
 import io.pomelo.user.center.core.persistence.entity.Role;
 import io.pomelo.user.center.core.persistence.entity.User;
@@ -168,7 +168,7 @@ public class UserService implements IUserService {
 //				logger.error(e);
 //			}
 		});
-		return new PageImpl<IUser>(icontent, page.getPageable(), page.getTotalElements());
+		return new IPageImpl<IUser>(icontent, page.getPageable(), page.getTotalElements());
 	}
 
 	@Override

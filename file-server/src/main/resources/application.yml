@@ -3,8 +3,6 @@ server:
 spring:
    profiles:
       active: dev
-   application:
-      name: file-server
    http:
       encoding:
          charset: UTF-8
@@ -16,3 +14,7 @@ spring:
          defaultEncoding: UTF-8
 logging:
    config: classpath:logback-spring.xml
+   level:
+      io.pomelo.commons: debug
+file:
+   path: null

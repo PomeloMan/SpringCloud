@@ -17,7 +17,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
@@ -30,6 +29,7 @@ import io.pomelo.commons.util.BeanUtils;
 import io.pomelo.commons.util.PageableUtil;
 import io.pomelo.commons.util.base.DateUtil;
 import io.pomelo.commons.view.IPage;
+import io.pomelo.commons.view.IPageImpl;
 import io.pomelo.user.center.core.persistence.entity.Authority;
 import io.pomelo.user.center.core.persistence.repo.AuthorityRepository;
 import io.pomelo.user.center.core.service.interfaces.IAuthorityService;
@@ -113,7 +113,7 @@ public class AuthorityService implements IAuthorityService {
 		}
 		Page<Authority> page = authorityRep.findAll(getQueryClause(pageView.getObject()), pageable);
 		List<IAuthority> icontent = BeanUtils.transform(page.getContent(), IAuthority.class);
-		return new PageImpl<IAuthority>(icontent, page.getPageable(), page.getTotalElements());
+		return new IPageImpl<IAuthority>(icontent, page.getPageable(), page.getTotalElements());
 	}
 
 	@Override

@@ -26,6 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.common.collect.Lists;
 
+import io.pomelo.commons.log.annotation.LogOperation;
 import io.pomelo.commons.util.base.FileUtil;
 import io.pomelo.file.server.core.persistence.entity.File;
 import io.pomelo.file.server.core.service.interfaces.IFileService;
@@ -66,6 +67,7 @@ public class FileController {
 	}
 
 	@PostMapping("/{service}/{module}/upload")
+	@LogOperation("文件上传")
 	@ApiOperation(value = "upload")
 	public ResponseEntity<List<File>> upload(MultipartFile[] file, HttpServletRequest req,
 			@PathVariable(value = "service") String service, @PathVariable(value = "module") String module)

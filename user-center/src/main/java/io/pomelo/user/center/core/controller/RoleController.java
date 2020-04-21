@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.pomelo.commons.log.annotation.LogOperation;
 import io.pomelo.commons.view.IPage;
 import io.pomelo.user.center.core.persistence.entity.Role;
 import io.pomelo.user.center.core.service.interfaces.IRoleService;
@@ -36,8 +37,8 @@ public class RoleController {
 	@PostMapping("page")
 	@ApiOperation(value = "角色分页查询")
 	public ResponseEntity<Page<IRole>> page(@RequestBody IPage<IRole> pageView) {
-		return new ResponseEntity<Page<IRole>>(roleService.query(pageView, pageView.getPageable(Direction.ASC, "createdDate")),
-				HttpStatus.OK);
+		return new ResponseEntity<Page<IRole>>(
+				roleService.query(pageView, pageView.getPageable(Direction.ASC, "createdDate")), HttpStatus.OK);
 	}
 
 	@PostMapping("list")
@@ -54,20 +55,23 @@ public class RoleController {
 	}
 
 	@PostMapping()
-	@ApiOperation(value = "新建角色", notes = "头部需要带token信息")
+	@LogOperation("角色新建")
+	@ApiOperation(value = "角色新建", notes = "头部需要带token信息")
 	public ResponseEntity<Role> save(@ApiParam(required = true) @RequestBody IRole view) {
 		return new ResponseEntity<Role>(roleService.saveOne(view), HttpStatus.OK);
 	}
 
 	@DeleteMapping()
-	@ApiOperation(value = "删除角色", notes = "头部需要带token信息")
+	@LogOperation("角色删除")
+	@ApiOperation(value = "角色删除", notes = "头部需要带token信息")
 	public ResponseEntity<Role> delete(@ApiParam(required = true) @RequestBody List<String> ids) {
 		roleService.delete(ids);
 		return new ResponseEntity<Role>(HttpStatus.OK);
 	}
 
 	@PutMapping()
-	@ApiOperation(value = "修改角色", notes = "头部需要带token信息")
+	@LogOperation("角色修改")
+	@ApiOperation(value = "角色修改", notes = "头部需要带token信息")
 	public ResponseEntity<Role> update(@ApiParam(required = true) @RequestBody IRole view) {
 		return new ResponseEntity<Role>(roleService.saveOne(view), HttpStatus.OK);
 	}

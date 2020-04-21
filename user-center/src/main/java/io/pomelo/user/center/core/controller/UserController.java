@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.pomelo.commons.log.annotation.LogOperation;
 import io.pomelo.commons.view.IPage;
 import io.pomelo.user.center.core.persistence.entity.User;
 import io.pomelo.user.center.core.service.interfaces.IUserService;
@@ -54,20 +55,23 @@ public class UserController {
 	}
 
 	@PostMapping()
-	@ApiOperation(value = "新建用戶", notes = "头部需要带token信息")
+	@LogOperation("用户新建")
+	@ApiOperation(value = "用户新建", notes = "头部需要带token信息")
 	public ResponseEntity<User> save(@ApiParam(required = true) @RequestBody IUser view) {
 		return new ResponseEntity<User>(userService.saveOne(view), HttpStatus.OK);
 	}
 
 	@DeleteMapping()
-	@ApiOperation(value = "删除角色", notes = "头部需要带token信息")
+	@LogOperation("用户删除")
+	@ApiOperation(value = "用户删除", notes = "头部需要带token信息")
 	public ResponseEntity<User> delete(@ApiParam(required = true) @RequestBody List<String> ids) {
 		userService.delete(ids);
 		return new ResponseEntity<User>(HttpStatus.OK);
 	}
 
 	@PutMapping()
-	@ApiOperation(value = "修改角色", notes = "头部需要带token信息")
+	@LogOperation("用户修改")
+	@ApiOperation(value = "用户修改", notes = "头部需要带token信息")
 	public ResponseEntity<User> update(@ApiParam(required = true) @RequestBody IUser view) {
 		return new ResponseEntity<User>(userService.saveOne(view), HttpStatus.OK);
 	}

@@ -2,9 +2,7 @@ server:
    port: 8100
 spring:
    profiles:
-      active: dev
-   application:
-      name: user-center
+      active: test
    http:
       encoding:
          charset: UTF-8
@@ -18,3 +16,5 @@ logging:
    config: classpath:logback-spring.xml
    level:
       io.pomelo.commons: debug
+file:
+   path: null

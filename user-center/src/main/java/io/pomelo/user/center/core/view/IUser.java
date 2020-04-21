@@ -4,9 +4,9 @@ import java.util.Collection;
 
 import io.pomelo.commons.view.IFile;
 import io.pomelo.user.center.core.persistence.entity.Authority;
-import io.pomelo.user.center.core.persistence.entity.Role;
 import io.pomelo.user.center.core.persistence.entity.User;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
 public class IUser extends User {
@@ -14,8 +14,9 @@ public class IUser extends User {
 	private static final long serialVersionUID = 1L;
 
 	private String search;
-	private Collection<Role> roles;
+	@ApiModelProperty(hidden = true)
 	private Collection<Authority> authorities;
+	@ApiModelProperty(hidden = true)
 	private IFile file;
 
 	public String getSearch() {
@@ -24,14 +25,6 @@ public class IUser extends User {
 
 	public void setSearch(String search) {
 		this.search = search;
-	}
-
-	public Collection<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Collection<Role> roles) {
-		this.roles = roles;
 	}
 
 	public Collection<Authority> getAuthorities() {

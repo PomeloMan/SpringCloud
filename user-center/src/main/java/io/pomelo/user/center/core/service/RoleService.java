@@ -16,7 +16,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -26,6 +25,7 @@ import io.pomelo.commons.enums.Status;
 import io.pomelo.commons.util.BeanUtils;
 import io.pomelo.commons.util.base.DateUtil;
 import io.pomelo.commons.view.IPage;
+import io.pomelo.commons.view.IPageImpl;
 import io.pomelo.user.center.core.persistence.entity.Role;
 import io.pomelo.user.center.core.persistence.repo.RoleRepository;
 import io.pomelo.user.center.core.service.interfaces.IRoleService;
@@ -98,7 +98,7 @@ public class RoleService implements IRoleService {
 		}
 		Page<Role> page = roleRep.findAll(getQueryClause(pageView.getObject()), pageable);
 		List<IRole> icontent = BeanUtils.transform(page.getContent(), IRole.class);
-		return new PageImpl<IRole>(icontent, page.getPageable(), page.getTotalElements());
+		return new IPageImpl<IRole>(icontent, page.getPageable(), page.getTotalElements());
 	}
 
 	@Override

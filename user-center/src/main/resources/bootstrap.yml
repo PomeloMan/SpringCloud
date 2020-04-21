@@ -1,0 +1,6 @@
+spring:
+   application:
+      name: user-center
+secure:
+   header: Authorization
+   prefix: Bearer 

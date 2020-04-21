@@ -1,0 +1,6 @@
+spring:
+   application:
+      name: file-server
+secure:
+   header: Authorization
+   prefix: Bearer

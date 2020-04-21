@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.pomelo.commons.log.annotation.LogOperation;
 import io.pomelo.commons.view.IPage;
 import io.pomelo.user.center.core.persistence.entity.Authority;
 import io.pomelo.user.center.core.service.interfaces.IAuthorityService;
@@ -46,20 +47,23 @@ public class AuthorityController {
 	}
 
 	@PostMapping()
-	@ApiOperation(value = "新建权限", notes = "头部需要带token信息")
+	@LogOperation("权限新建")
+	@ApiOperation(value = "权限新建", notes = "头部需要带token信息")
 	public ResponseEntity<Authority> save(@ApiParam(required = true) @RequestBody IAuthority view) {
 		return new ResponseEntity<Authority>(authService.saveOne(view), HttpStatus.OK);
 	}
 
 	@DeleteMapping()
-	@ApiOperation(value = "删除权限", notes = "头部需要带token信息")
+	@LogOperation("权限删除")
+	@ApiOperation(value = "权限删除", notes = "头部需要带token信息")
 	public ResponseEntity<Authority> delete(@ApiParam(required = true) @RequestBody List<String> ids) {
 		authService.delete(ids);
 		return new ResponseEntity<Authority>(HttpStatus.OK);
 	}
 
 	@PutMapping()
-	@ApiOperation(value = "修改权限", notes = "头部需要带token信息")
+	@LogOperation("权限修改")
+	@ApiOperation(value = "权限修改", notes = "头部需要带token信息")
 	public ResponseEntity<Authority> update(@ApiParam(required = true) @RequestBody IAuthority view) {
 		return new ResponseEntity<Authority>(authService.saveOne(view), HttpStatus.OK);
 	}

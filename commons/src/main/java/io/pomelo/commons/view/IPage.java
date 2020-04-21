@@ -6,6 +6,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 
 import io.pomelo.commons.util.PageableUtil;
+import io.swagger.annotations.ApiModelProperty;
 
 public class IPage<O> {
 
@@ -57,10 +58,12 @@ public class IPage<O> {
 		this.dir = dir;
 	}
 
+	@ApiModelProperty(hidden = true)
 	public Pageable getPageable() {
 		return getPageable(getDir(), getOrder());
 	}
 
+	@ApiModelProperty(hidden = true)
 	public Pageable getPageable(String dir, String order) {
 		Sort sort = Sort.unsorted();
 		if (StringUtils.isNoneEmpty(dir) && StringUtils.isNoneEmpty(order)) {
@@ -69,6 +72,7 @@ public class IPage<O> {
 		return PageableUtil.getPageRequest(getPage(), getSize(), sort);
 	}
 
+	@ApiModelProperty(hidden = true)
 	public Pageable getPageable(Direction dir, String order) {
 		Sort sort = Sort.unsorted();
 		if (dir != null && StringUtils.isNoneEmpty(order)) {
