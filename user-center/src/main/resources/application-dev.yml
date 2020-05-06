@@ -2,12 +2,14 @@ eureka:
    client:
       service-url:
          defaultZone: http://eureka:eureka@127.0.0.1:8760/eureka/
+#      registerWithEureka: false
+#      fetchRegistry: false
    instance:
       prefer-ip-address: true
       instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${server.port}:@project.version@
 spring:
    datasource:
-      url: jdbc:postgresql://localhost:5432/pomelo-user
+      url: jdbc:postgresql://localhost:5432/springcloud
       username: postgres
       password: 219003
       driver-class-name: org.postgresql.Driver
@@ -20,12 +22,15 @@ spring:
       show-sql: true
       hibernate:
          ddl-auto: update
+         dialect: org.hibernate.dialect.PostgreSQLDialect
       properties:
          hibernate:
             temp:
                use_jdbc_metadata_defaults: false
             dialect: org.hibernate.dialect.PostgreSQLDialect
             format_sql: true
+            hbm2ddl:
+               auto: update
 logging:
    path: logs
 cors:

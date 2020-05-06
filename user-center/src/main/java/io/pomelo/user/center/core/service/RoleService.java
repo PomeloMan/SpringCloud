@@ -96,7 +96,7 @@ public class RoleService implements IRoleService {
 		if (pageable == null) {
 			pageable = pageView.getPageable();
 		}
-		Page<Role> page = roleRep.findAll(getQueryClause(pageView.getObject()), pageable);
+		Page<Role> page = roleRep.findAll(getQueryClause(pageView.getSearchable()), pageable);
 		List<IRole> icontent = BeanUtils.transform(page.getContent(), IRole.class);
 		return new IPageImpl<IRole>(icontent, page.getPageable(), page.getTotalElements());
 	}

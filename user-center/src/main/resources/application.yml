@@ -3,6 +3,9 @@ server:
 spring:
    profiles:
       active: test
+   messages:
+      encoding: UTF-8
+      basename: message/ValidationMessages
    http:
       encoding:
          charset: UTF-8

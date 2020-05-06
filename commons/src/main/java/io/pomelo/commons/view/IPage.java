@@ -16,14 +16,14 @@ public class IPage<O> {
 	String order;
 	String dir;
 
-	O object;
+	O searchable;
 
-	public O getObject() {
-		return object;
+	public O getSearchable() {
+		return searchable;
 	}
 
-	public void setObject(O object) {
-		this.object = object;
+	public void setSearchable(O searchable) {
+		this.searchable = searchable;
 	}
 
 	public int getPage() {

@@ -153,7 +153,7 @@ public class UserService implements IUserService {
 
 	@Override
 	public Page<IUser> query(IPage<IUser> pageView, Pageable pageable) {
-		Page<User> page = userRep.findAll(getQueryClause(pageView.getObject()), pageable);
+		Page<User> page = userRep.findAll(getQueryClause(pageView.getSearchable()), pageable);
 		List<IUser> icontent = BeanUtils.transform(page.getContent(), IUser.class);
 		icontent.stream().forEach(iuser -> {
 			iuser.setAvatar(fileServerProp.getUserAvatarUrl() + iuser.getAvatar());

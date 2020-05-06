@@ -6,6 +6,8 @@ import javax.persistence.Version;
 @MappedSuperclass
 public abstract class VersionEntity extends DefaultEntity {
 
+	private static final long serialVersionUID = 1L;
+
 	@Version
 	protected int version;// spring 乐观锁@*Service.saveOne(T entity)
 

@@ -1,14 +1,12 @@
 package io.pomelo.user.center.core.persistence.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "sys_authority")
-public class Authority extends VersionEntity implements Serializable {
+public class Authority extends VersionEntity {
 
 	private static final long serialVersionUID = 1L;
 

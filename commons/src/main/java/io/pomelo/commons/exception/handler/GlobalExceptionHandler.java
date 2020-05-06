@@ -1,5 +1,6 @@
 package io.pomelo.commons.exception.handler;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -41,6 +44,23 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(BusinessException.class)
 	public ResponseEntity<?> handleRenException(BusinessException ex) {
 		return new ResponseEntity<String>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	/**
+	 * 处理请求参数校验异常
+	 * 
+	 * @param e
+	 * @return
+	 */
+	@ExceptionHandler(value = MethodArgumentNotValidException.class)
+	public ResponseEntity<String> validationHandler(MethodArgumentNotValidException e) {
+		List<ObjectError> errors = e.getBindingResult().getAllErrors();
+		StringBuilder builder = new StringBuilder();
+		errors.stream().forEach(error -> {
+			builder.append(error.getDefaultMessage());
+			builder.append(";");
+		});
+		return new ResponseEntity<String>(builder.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	@ExceptionHandler(Exception.class)

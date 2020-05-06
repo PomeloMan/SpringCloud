@@ -1,5 +1,6 @@
 package io.pomelo.user.center.core.persistence.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -11,8 +12,9 @@ import io.pomelo.commons.enums.Status;
 import io.swagger.annotations.ApiModelProperty;
 
 @MappedSuperclass
-public abstract class DefaultEntity {
+public abstract class DefaultEntity implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	@ApiModelProperty(hidden = true)
 	protected Status status = Status.Init;
 	protected String creator;
@@ -21,10 +23,12 @@ public abstract class DefaultEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(updatable = false)
 	@org.hibernate.annotations.CreationTimestamp
+	@ApiModelProperty(hidden = true)
 	protected Date createdDate;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@org.hibernate.annotations.UpdateTimestamp
+	@ApiModelProperty(hidden = true)
 	protected Date modifiedDate;
 
 	public Status getStatus() {
@@ -68,10 +72,12 @@ public abstract class DefaultEntity {
 	}
 
 	// 状态信息
+	@ApiModelProperty(hidden = true)
 	public String getStatusDesc() {
 		return this.status.getDescription();
 	}
 
+	@ApiModelProperty(hidden = true)
 	public int getStatusCode() {
 		return this.status.getCode();
 	}

@@ -8,6 +8,8 @@ import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -39,6 +41,7 @@ public class User extends VersionEntity implements Serializable {
 
 	@ApiModelProperty(hidden = true)
 	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "sys_user_role", inverseJoinColumns = @JoinColumn(name = "role_name"), joinColumns = @JoinColumn(name = "user_username"))
 	private Collection<Role> roles;
 
 	public User(String username, Status status) {

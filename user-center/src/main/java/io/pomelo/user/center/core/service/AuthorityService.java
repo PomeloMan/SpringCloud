@@ -111,7 +111,7 @@ public class AuthorityService implements IAuthorityService {
 			pageable = PageableUtil.getPageRequest(pageView.getPage(), pageView.getSize(),
 					new Sort(Direction.ASC, "sequence"));
 		}
-		Page<Authority> page = authorityRep.findAll(getQueryClause(pageView.getObject()), pageable);
+		Page<Authority> page = authorityRep.findAll(getQueryClause(pageView.getSearchable()), pageable);
 		List<IAuthority> icontent = BeanUtils.transform(page.getContent(), IAuthority.class);
 		return new IPageImpl<IAuthority>(icontent, page.getPageable(), page.getTotalElements());
 	}

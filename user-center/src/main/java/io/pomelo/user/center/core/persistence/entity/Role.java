@@ -1,11 +1,12 @@
 package io.pomelo.user.center.core.persistence.entity;
 
-import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -13,7 +14,7 @@ import io.pomelo.user.center.core.enums.RoleGroup;
 
 @Entity
 @Table(name = "sys_role")
-public class Role extends VersionEntity implements Serializable {
+public class Role extends VersionEntity {
 
 	private static final long serialVersionUID = 1L;
 
@@ -23,6 +24,7 @@ public class Role extends VersionEntity implements Serializable {
 	private RoleGroup roleGroup = RoleGroup.SYS_ADMIN;
 
 	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "sys_role_authority", inverseJoinColumns = @JoinColumn(name = "authority_name"), joinColumns = @JoinColumn(name = "role_name"))
 	private Collection<Authority> authorities;
 
 	public Role(String name) {
