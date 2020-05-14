@@ -79,7 +79,7 @@ public class Role extends VersionEntity {
 	}
 
 	public RoleGroup getRoleGroup() {
-		return roleGroup;
+		return roleGroup == null ? RoleGroup.SYS_ADMIN : roleGroup;
 	}
 
 	public void setRoleGroup(RoleGroup roleGroup) {

@@ -26,6 +26,19 @@ spring:
                use_jdbc_metadata_defaults: false
             dialect: org.hibernate.dialect.PostgreSQLDialect
             format_sql: true
+security:
+   basic:
+      enabled: false
+   oauth2:
+      resource:
+         id: file-resource
+         #loadBalanced: true
+         #user-info-uri: http://user-center/user
+         #prefer-token-info: false
+         #token-info-uri: http://127.0.0.1:8100/oauth/check_token
+         # same with token-info-uri
+         jwt:
+            key-uri: http://127.0.0.1:8100/oauth/token_key
 logging:
    path: logs
 cors:

@@ -2,7 +2,7 @@ server:
    port: 8100
 spring:
    profiles:
-      active: test
+      active: dev
    messages:
       encoding: UTF-8
       basename: message/ValidationMessages

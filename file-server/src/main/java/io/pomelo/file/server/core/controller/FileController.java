@@ -3,6 +3,7 @@ package io.pomelo.file.server.core.controller;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.security.Principal;
 import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
@@ -17,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,6 +45,15 @@ public class FileController {
 
 	@Autowired
 	IFileService fileService;
+
+	@GetMapping("/user")
+	public ResponseEntity<Principal> user(Principal principal) {
+		if (OAuth2Authentication.class.isInstance(principal)) {
+			OAuth2Authentication auth = (OAuth2Authentication) principal;
+			return new ResponseEntity<Principal>(auth.getUserAuthentication(), HttpStatus.OK);
+		}
+		return new ResponseEntity<Principal>(principal, HttpStatus.OK);
+	}
 
 	@GetMapping(value = "/{service}/{module}/{id}")
 	@ApiOperation(value = "info")

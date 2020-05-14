@@ -1,5 +1,6 @@
 package io.pomelo.user.center.core.controller;
 
+import java.security.Principal;
 import java.util.Collection;
 import java.util.List;
 
@@ -34,6 +35,11 @@ public class UserController {
 
 	@Autowired
 	IUserService userService;
+
+	@GetMapping()
+	public ResponseEntity<IUser> user(Principal principal) {
+		return new ResponseEntity<IUser>(userService.findOne(principal.getName()), HttpStatus.OK);
+	}
 
 	@PostMapping("list")
 	@ApiOperation(value = "用户列表")

@@ -13,10 +13,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(basePackages = { "io.pomelo" })
 @EnableJpaRepositories(basePackages = { "io.pomelo" })
 @SpringBootApplication(scanBasePackages = { "io.pomelo" })
-public class Application {
+public class UserCenterApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(UserCenterApplication.class, args);
 //		ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
 	}
 }

@@ -25,6 +25,9 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -43,7 +46,7 @@ import io.pomelo.user.center.core.service.interfaces.IUserService;
 import io.pomelo.user.center.core.view.IUser;
 
 @Service
-public class UserService implements IUserService {
+public class UserService implements IUserService, UserDetailsService {
 
 	private final Log logger = LogFactory.getLog(UserService.class);
 
@@ -56,6 +59,11 @@ public class UserService implements IUserService {
 
 	@Autowired
 	UserRepository userRep;
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		return findOne(username);
+	}
 
 	private Specification<User> getQueryClause(IUser view) {
 		return new Specification<User>() {
@@ -126,7 +134,7 @@ public class UserService implements IUserService {
 		Set<Role> roles = userRep.findRolesByUsername(username);
 		Set<Authority> auths = userRep.findAuthoriesByUsername(username);
 		iuser.setRoles(roles);
-		iuser.setAuthorities(auths);
+		iuser.setSysAuthorities(auths);
 		iuser.setAvatar(fileServerProp.getUserAvatarUrl() + iuser.getAvatar());
 //		try {
 //			ResponseEntity<IFile> response = fileServiceClient.info("user", "avatar", iuser.getAvatar());

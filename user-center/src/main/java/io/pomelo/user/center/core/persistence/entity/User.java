@@ -1,9 +1,9 @@
 package io.pomelo.user.center.core.persistence.entity;
 
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,16 +12,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
-import org.apache.commons.lang3.StringUtils;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import io.pomelo.commons.enums.Status;
-import io.pomelo.commons.util.PasswordEncoder;
 import io.swagger.annotations.ApiModelProperty;
 
 @Entity
 @Table(name = "sys_user")
-public class User extends VersionEntity implements Serializable {
+public class User extends VersionEntity implements UserDetails, Serializable {
 
 	// @Id
 	// @GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,6 +45,10 @@ public class User extends VersionEntity implements Serializable {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "sys_user_role", inverseJoinColumns = @JoinColumn(name = "role_name"), joinColumns = @JoinColumn(name = "user_username"))
 	private Collection<Role> roles;
+
+	@ApiModelProperty(hidden = true)
+	@Transient
+	private Collection<Authority> sysAuthorities;
 
 	public User(String username, Status status) {
 		super();
@@ -110,12 +116,8 @@ public class User extends VersionEntity implements Serializable {
 		return password;
 	}
 
-	public void setPassword(String password) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-		if (StringUtils.isNotEmpty(password)) {
-			this.password = PasswordEncoder.encode(password, username);
-		} else {
-			this.password = password;
-		}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Collection<Role> getRoles() {
@@ -150,4 +152,40 @@ public class User extends VersionEntity implements Serializable {
 		this.gender = gender;
 	}
 
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		if (sysAuthorities == null) {
+			return Collections.emptyList();
+		}
+		return sysAuthorities.stream().map(auth -> new SimpleGrantedAuthority(auth.getName()))
+				.collect(Collectors.toList());
+	}
+
+	public Collection<Authority> getSysAuthorities() {
+		return sysAuthorities == null ? Collections.emptyList() : sysAuthorities;
+	}
+
+	public void setSysAuthorities(Collection<Authority> customAuthorities) {
+		this.sysAuthorities = customAuthorities;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return !this.status.equals(Status.Expired);
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return this.status.equals(Status.Valid);
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return !this.status.equals(Status.Expired);
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return this.status.equals(Status.Valid);
+	}
 }

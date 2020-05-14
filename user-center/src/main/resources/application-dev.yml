@@ -35,7 +35,51 @@ logging:
    path: logs
 cors:
    exposed-headers: Autherication
-   allowed-origins: http://127.0.0.1:8000
+   allowed-origins: http://127.0.0.1:8000,http://127.0.0.1:8008,*
 file-server:
    host: http://127.0.0.1:8200/
    user-avatar-url: http://127.0.0.1:8200/file/bytes/user/avatar/
+jwt:
+   token:
+# RS256
+# openssl genrsa -out jwt.pem 2048
+# openssl rsa -in jwt.pem
+      verifier-key: |
+         -----BEGIN PUBLIC KEY-----
+         MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3er1mOXT7I6aP0018wRf
+         9MEwds5iKQU5pXO93XGM/8T7TLLt9tHW8DQnxhbvDaCzW3FFuToyUe1JqJO83Lks
+         Wf3k8fj+DnG6yVX8sIWzrl4XBflVNcgbsB6N9IBzh0ChMnQvFjO2svzAGbx2JJiB
+         1zlX5FwLTSu+nwViDetLYO5ULr+M5foRJQqA2f7qmq+kgWK7Tvl2FeGkCmd6J2In
+         NTQHO+lq1eVeAhcBgK5POxjYOEWs06QC7Te0oHktXcMiKrjCiYi1dmxZ2KMaQU1r
+         ZGozWKsRxODENtYlXY32gbzslwQYOeCkV4tjWYHeyPfGGfsjlWeIOuNLnqIo+Kp8
+         fwIDAQAB
+         -----END PUBLIC KEY-----
+# openssl rsa -in jwt.pem -pubout
+      signing-key: |-
+         -----BEGIN RSA PRIVATE KEY-----
+         MIIEpAIBAAKCAQEA3er1mOXT7I6aP0018wRf9MEwds5iKQU5pXO93XGM/8T7TLLt
+         9tHW8DQnxhbvDaCzW3FFuToyUe1JqJO83LksWf3k8fj+DnG6yVX8sIWzrl4XBflV
+         NcgbsB6N9IBzh0ChMnQvFjO2svzAGbx2JJiB1zlX5FwLTSu+nwViDetLYO5ULr+M
+         5foRJQqA2f7qmq+kgWK7Tvl2FeGkCmd6J2InNTQHO+lq1eVeAhcBgK5POxjYOEWs
+         06QC7Te0oHktXcMiKrjCiYi1dmxZ2KMaQU1rZGozWKsRxODENtYlXY32gbzslwQY
+         OeCkV4tjWYHeyPfGGfsjlWeIOuNLnqIo+Kp8fwIDAQABAoIBAAbqHUDoWFQUlWXH
+         iBjMWBkOM+5fu9s/WG55Tr8pnJUTlCjtolCAdUwCtAKOEGDCUxRUUTHWSF8ZH6Rr
+         BgVyl5kuOgX4FiJpFMLVNQxi/hg+wkTjYe5ND9/K8+1cWz0pnFwwFo+AiP7GtU2X
+         +65kOhd0p/Jrk8aRyFy4FDgOzsh0Vbw9bFKcBFiAc60JuTGRt+NHu0DvBktw3Et/
+         DEqwfCP3CniTk6AyXhxTkxYuQWLIvZxKkTQplIT5Eskq8uvIbblGQo1ntwiZQ+n4
+         PWRuCyBfczLrxIXLzZ+Q4ljNXZZafxXm8uJjvStNrkDxYSWpRqXOG0bAjhernFYD
+         710S3QECgYEA8iisELcN5Xqs4NSVqCbmFYqX+XceIby0+/b2uBmJxVlEHsN74n40
+         tyEID0EDrjCw+AtwIZVaCGFANnrJHTft3kqGpPxjLz8q0nNDlL3pEjHqM8IP/db0
+         cj9umYZl8A83CQH/z7HTBQJnGa1qmFJsO6ZPZleNFg/NVUl4RtTFH8ECgYEA6pod
+         caX6l+r0i4ZdMf4UGD3MMdaRdaM/PnjR0aHul/YdvOP8rTqbDNdRtxskSif6ASSJ
+         onhccpRKxFKaPPABtP6JZI0c8b3c64j1SkGE/+IxUkjBwr7+slPcpnUnucH+0Dm+
+         uzM6Dsdew7OosKTgwHmYC91XdOXrllkkMb9SrD8CgYEA0AsBSJr75VsvizkYGg7R
+         PVCEoF4mFPX6xz21WRUXt+SpEYUAueWThIFsWy6P6ucKIxAwlamqX+itMiDrB581
+         TPTaGIR88epi78r3FKLTyj3359+hvYMfH8g/TMaabVOlBKgjDlzH3lXiHb1PBu5I
+         7jZDoLk3DO0mi09Ddhb2BAECgYBw165f8uklV4NG9VswZ7j8rATi2AVhYyNRhkXO
+         Iqij+WL2b2cjX7QiqhMJEwoSjUYIdK2rM1+sUT3hTqYXt43qpCAr+GA6uwtfU6JA
+         lGFHv2Hf5VUluj7CQeo5OtLf27sYJx5h5tL/NtCTK4Bxbu0YR6Rl2JJvjQQTbk8l
+         ipRWewKBgQDIcPJi9M01h1OGJyGLvqLOD/zZAHWDvP35LL1JavOx/+6weXju0PBG
+         437o99p2pZGYX5DHQCGdxB7ECWhUWcvayBnuflYrpJMoNtcDJLbuGln/zVSG3S9+
+         fX9zbi9beKikBkO6rQq6WLx+jpqJSgunj17V5nxJp9DJQ8THVq08ww==
+         -----END RSA PRIVATE KEY--------
