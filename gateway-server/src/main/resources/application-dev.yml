@@ -7,15 +7,15 @@ eureka:
       instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${server.port}:@project.version@
 spring:
    cloud:
+      ## https://cloud.spring.io/spring-cloud-gateway/2.1.x/single/spring-cloud-gateway.html
       gateway:
          globalcors:
             corsConfigurations:
                '[/**]':
-                  allowedOrigins: '*'
-                  allowedMethods:
-                  - GET,POST,PUT,DELETE
-                  allowHeaders:
-                  - Content-Type
+                  allowed-origins: '*'
+                  allowed-methods: '*'
+                  allowed-headers: '*'
+                  allow-credentials: true
          routes:
          -  id: user-center-route
             uri: lb://user-center

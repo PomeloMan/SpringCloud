@@ -1,5 +1,9 @@
 package io.pomelo.user.center.core.enums;
 
+/**
+ * 角色组，用于给角色分类，不同角色归类不同角色组
+ * @author FengChao
+ */
 public enum RoleGroup {
 
 	/** 0 */ SYS_ADMIN(1, "系统管理员"),
