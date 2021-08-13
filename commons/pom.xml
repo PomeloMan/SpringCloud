@@ -22,7 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<bcprov.version>1.57</bcprov.version>
+		<bcprov.version>1.67</bcprov.version>
 		<poi.version>3.17</poi.version>
 		<adal4j.version>1.5.0</adal4j.version>
 		<jjwt.version>0.9.0</jjwt.version>
